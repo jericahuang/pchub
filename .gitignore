@@ -1,3 +1,11 @@
+#Included these files in .gitignore for the PCHubTest project.
+/.classpath
+/.project
+/.settings/
+/target/
+/test-output/
+
+
 *.class
 
 # Mobile Tools for Java (J2ME)
