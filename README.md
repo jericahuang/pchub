@@ -44,3 +44,22 @@
   ```  
   
 ### Set up the PCHub Testing Environment
+
+1. Download [Selenium for Java] (http://www.seleniumhq.org/download/).  
+   At the time of this writing, selenium 2.53 with Ubuntu 16.04 was used.  
+
+2. Ensure Firefox is installed.  
+   Selenium 2.53 is compatible with Firefox 45.  Check [CHANGELOG] (https://github.com/SeleniumHQ/selenium/blob/master/java/CHANGELOG) to view the compatibility of selenium versions between browsers.  
+
+3. Download [Apache POI] (https://poi.apache.org/download.html) API.  
+
+4. Download and install [Eclipse] (http://www.eclipse.org/downloads/packages/). 
+
+5. Clone the project and import it into eclipse.
+  ```
+  git clone https://github.com/daisyab/PCHubTest.git
+  ```
+6. In eclipse, include selenium and Apache POI jars in the build path of the project.
+
+7. Run the tests located in /src/test/java/pchub.
+
