@@ -16,7 +16,9 @@ public class Constants {
 	
 	public static final String signupSubmit = "/html/body/div/div/div[2]/div/div/div/div/div[2]/form/button";
 	
-	public static final String loginDataSheetName = "Sheet 1";
+	public static final String loginDataSheetName = "SignIn";
+	
+	public static final String signUpSheetName = "SignUp";
 	
 	public static final String pathToExcel = "src/main/java/pchub/utilities/ExcelSheet.xlsx";
 	
