@@ -7,7 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import pchub.utilities.CommonCode;
 
-public class HomepageTests extends CommonCode{		
+public class HomepageTest extends CommonCode{		
 	    
 	@Test
 	public void AllLinksTest() throws InterruptedException {
