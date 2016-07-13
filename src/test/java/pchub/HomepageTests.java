@@ -3,6 +3,7 @@ package pchub;
 import org.testng.annotations.Test;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import pchub.utilities.CommonCode;
 
@@ -22,9 +23,8 @@ public class HomepageTests extends CommonCode{
 			Thread.sleep(2000);
 		}
 		
-		//((JavascriptExecutor) driver).executeScript(
-			//	"window.scrollTo(0, document.body.scrollHeight)");
+		JavascriptExecutor javascript = (JavascriptExecutor)driver;
+		javascript.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		//TODO: Implement scroll down after test fails and click on links
-	}
-		
+	}	
 }	
