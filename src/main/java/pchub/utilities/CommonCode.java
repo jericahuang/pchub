@@ -22,6 +22,6 @@ public class CommonCode {
 	
 	@AfterTest
 	public void afterTest() {
-		driver.close();
+		driver.quit();
 	}
 }
