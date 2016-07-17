@@ -25,5 +25,19 @@ public class Constants {
 	public static final String webapp = baseURL + "web_list.html";
 	
 	public static final String mobileapp = baseURL + "app_list.html";
-
+	
+	public static final String signIn = "http://localhost:3000/users/sign_in";
+	
+	
+	//Constants required for SignInPageTest.java
+	
+	public static final String expectedHomeURL = "http://localhost:3000/#home";
+	
+	public static final String expectedWebAppURL = "http://localhost:3000/#web-apps";
+	
+	public static final String expectedMobileAppURL = "http://localhost:3000/#mobile-apps";
+	
+	public static final String expectedNewUserURL = "http://localhost:3000/users/sign_up";
+	
+	public static final String signInPageSheetName = "SignInPage";
 }
