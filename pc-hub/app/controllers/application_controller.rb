@@ -35,7 +35,5 @@ class ApplicationController < ActionController::Base
              :country, :profile_link, :additional_information, :invitation_token, 
              :password, :password_confirmation)
     end
-
-  end 
-
+  end
 end
