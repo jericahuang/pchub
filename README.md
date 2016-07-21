@@ -61,5 +61,7 @@
   ```
 6. In eclipse, include selenium and Apache POI jars in the build path of the project.
 
+7.  In the src/main/java/pchub/utilities/Constants.java, change sqlite_database_file_path to the path to the development.sqlite3 located in the db directory of the PCHub project.
+
 7. Run the tests located in /src/test/java/pchub.
 
