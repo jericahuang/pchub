@@ -1,15 +1,14 @@
 package pchub;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pchub.utilities.Constants;
@@ -20,7 +19,7 @@ public class SignupTest {
 	private WebDriver driver;
 	String expectedTitle = "PcHub";
 	
-	@BeforeTest
+	@BeforeMethod
 	public void beforeTest() {	
 		String baseURL = Constants.baseURL;
 		driver = new FirefoxDriver();
@@ -97,7 +96,7 @@ public class SignupTest {
 		return cellData;
 	}
 	
-	@AfterTest
+	@AfterMethod
 	public void afterTest() {
 		driver.quit();
 	}
