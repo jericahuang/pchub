@@ -28,8 +28,9 @@ public class Constants {
 	
 	public static final String signIn = "http://localhost:3000/users/sign_in";
 	
-	
-	//Constants required for SignInPageTest.java
+	/**
+	 * The following are constants required for SignInPageTest.java
+	 */
 	
 	public static final String expectedHomeURL = "http://localhost:3000/#home";
 	
@@ -40,4 +41,11 @@ public class Constants {
 	public static final String expectedNewUserURL = "http://localhost:3000/users/sign_up";
 	
 	public static final String signInPageSheetName = "SignInPage";
+	
+	/**
+	 * The following are constants required for CommonDBTests.java
+	 */
+	
+	public static final String dbFilePath = "sqlite_database_file_path";
+	 
 }
