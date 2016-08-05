@@ -10,24 +10,12 @@ class User < ActiveRecord::Base
     validates :email, confirmation: true
     validates :role, presence: true
 
-    if self.created_by_invite
+    if self.created_by_invite == true
         validate :inviter_has_permission_to_invite
     end
 
-    private
-
-    def inviter_has_permission_to_invite
-        inviter = User.find(self.invited_by_id)
-
-        if inviter.role == "admin"
-            unless self.role == "staff" || self.role == "volunteer"
-                raise CanCan::AccessDenied
-            end
-        end
-
-        if inviter.role == "staff" || inviter.role == "volunteer"
-            raise CanCan::AccessDenied
-        end
+    def self.search(search)
+      where("name LIKE ?", "%#{search}%") 
     end
    
     def role?(role)
@@ -48,5 +36,21 @@ class User < ActiveRecord::Base
         else 
             super 
         end 
+    end
+
+    private
+
+    def inviter_has_permission_to_invite
+        inviter = User.find(self.invited_by_id)
+
+        if inviter.role == "admin"
+            unless self.role == "staff" || self.role == "volunteer"
+                raise CanCan::AccessDenied
+            end
+        end
+
+        if inviter.role == "staff" || inviter.role == "volunteer"
+            raise CanCan::AccessDenied
+        end
     end
 end

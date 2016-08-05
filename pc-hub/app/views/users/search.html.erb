@@ -1,0 +1,67 @@
+<%- model_class = User -%>
+<div class="section">
+    <div class="row">
+        <div class="container">
+            <div class="page-header">
+                <h3><%=t '.title', :default => "Users search" %></h3>
+            </div>
+
+            <nav class="col-sm-2">
+              <ul class="nav nav-pills nav-stacked">
+                <li class="active">
+                  <a href='#'>Users
+                    <i class="sub-icon glyphicon glyphicon-user"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>Applications
+                     <i class="sub-icon fa fa-desktop"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="col-md-10">
+              <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th><%= model_class.human_attribute_name(:name) %></th>
+                      <th><%= model_class.human_attribute_name(:nickname) %></th>
+                      <th><%= model_class.human_attribute_name(:email) %></th>
+                      <th><%= model_class.human_attribute_name(:country) %></th>
+                      <th><%= model_class.human_attribute_name(:city) %></th>
+                      <th><%= model_class.human_attribute_name(:profile_link) %></th>
+                      <% if current_user.role == "admin" || current_user.role == "superadmin" %>
+                        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+                      <% end %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user| %>
+                        <tr>
+                            <td><%= link_to user.name, user_path(user) %></td>
+                            <td><%= user.nickname %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.country %></td>
+                            <td><%= user.city %></td>
+                            <td><%= user.profile_link %></td>
+                            <% if current_user.role == "admin" || current_user.role == "superadmin" %>
+                              <td>
+                                <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                                edit_user_path(user), :class => 'btn btn-default btn-xs' %>
+
+                                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                                user_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure?" )) }, :class => 'btn btn-xs btn-danger' %>
+                              </td>
+                            <% end %>
+                        </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <% if current_user.role == "admin" || current_user.role == "superadmin" %>
+                <%= link_to "Add new user", new_user_invitation_path, :class => 'btn turquoise' %>
+              <% end %>
+            </div>
+        </div>
+    </div>
+</div>

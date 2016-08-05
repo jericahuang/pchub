@@ -1,0 +1,16 @@
+<%= bootstrap_form_for(@application) do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_area :description, label: "Description", rows: 5 %>
+    <%= f.form_group :platform, label: { text: "Operating System" } do %>
+      <%= f.radio_button :platform, "android", label: "Android", inline: true %>
+      <%= f.radio_button :platform, "ios", label: "IOS", inline: true %>
+    <% end %>
+    <%= f.text_field :app_link, help: "If the application is not on Play Store or Apple Store yet, you can keep it blank" %>
+    <%= f.text_field :repository_link %>
+
+    <div class="actions">
+      <%= f.submit "Save", class: "btn btn-success"  %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                applications_path, :class => 'btn btn-default' %>
+    </div>
+<% end %>
