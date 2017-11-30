@@ -1,10 +1,51 @@
-#2015 Systers Qualcomm Hack
-##Peace Corps Hub
+#Peace Corps Hub
 
 ###Background
 
 Systers has partnered with Peace Corps to develop several web and mobile applications. All of the applications have separate repos on our GitHub page, but we don't have a central HUB for Peace Corps staff and volunteers to access all of the applications.
 
+###Installation Guide
+
+#### 1. Installing Ruby
+
+There are several options to install Ruby, this tutorial will use the installation from source, but you can see tutorials of others options on the [Ruby page](https://www.ruby-lang.org/pt/documentation/installation/).
+
+To install from source download and unpack [this package](https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz).
+Then do:
+
+    $ ./configure
+    $ make
+    $ sudo make install
+    
+By default, this will install Ruby into `/usr/local`. To change, pass the `--prefix=DIR` option to the `./configure` script.
+
+#### 2. Installing SQLite
+
+Today, almost all the flavours of Linux OS and latest version of Mac OS X are being shipped with SQLite. So you just issue the following command to check if you already have SQLite installed on your machine or not.
+
+    $ sqlite3 --version
+
+If you don't have SQLite installed, follow the steps below:
+
+Download [this package](http://www.sqlite.org/2016/sqlite-autoconf-3150000.tar.gz).
+
+Then do:
+
+    $ tar xvfz sqlite-autoconf-3071502.tar.gz
+    $ cd sqlite-autoconf-3071502
+    $ ./configure --prefix=/usr/local
+    $ make
+    $ make install
+    
+#### 3. Installing Rails
+
+To install Rails, use the gem install command provided by RubyGems:
+
+    $ gem install rails
+    
+To verify that you have everything installed correctly, you should be able to run the following:
+
+    $ rails --version
 
 ###Goal of the Hack
 

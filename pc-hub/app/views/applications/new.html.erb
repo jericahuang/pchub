@@ -1,0 +1,15 @@
+<%- model_class = Application -%>
+<div class="section">
+    <div class="row">
+        <div class="container">
+			<div class="page-header">
+			  <h2><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h2>
+			</div>
+			<% if @application.platform == 'web' %>
+				<%= render :partial => 'web_form' %>
+			<% else %>
+				<%= render :partial => 'mobile_form' %>
+			<% end %>
+		</div>
+	</div>
+</div>

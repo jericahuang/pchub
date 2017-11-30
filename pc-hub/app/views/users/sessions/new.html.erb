@@ -1,0 +1,28 @@
+<div class="section">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h2>Sign In</h2>
+                </div>
+                <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <%= f.email_field :email, autofocus: true %>
+                    <%= f.password_field :password, autocomplete: "off" %>
+                    <% if devise_mapping.rememberable? -%>
+                        <%= f.check_box :remember_me %>
+                    <% end %>
+
+                    <div class="actions">
+                       <%= f.submit "Log in", class: "btn btn-success" %>
+                    </div>
+                    <br>
+                    <%= link_to "Forgout your password?", new_password_path(resource_name), 
+                      class: "brand-blue" %>
+                    <br><br>
+                    <%= link_to "New here? Create an account", new_user_registration_path,
+                      class: "brand-blue" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

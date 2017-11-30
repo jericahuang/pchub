@@ -1,0 +1,98 @@
+<%- model_class = Application -%>
+<br><br>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <%= image_tag @application.app_image.url, class: "img-responsive" %>
+      </div>
+      <div class="col-md-6">
+        <h1 class="brand-blue">
+          <%= @application.name %>
+          <small>
+            &nbsp;<%= @application.platform %>
+          </small>
+        </h1>
+        <p class="text-justify">
+          <%= @application.description %>
+            <br>
+            <br>
+        </p>
+        <div class="row">
+          <div class="col-md-12">
+              <a href="http://systers.io/slack-systers-opensource/" target="_blank"><i class="brand-blue fa fa-2x fa-fw fa-slack"></i></a>
+              <%= link_to @application.repository_link do %>
+                  <i class="brand-blue fa fa-2x fa-fw fa-github"></i>
+              <% end %>
+          </div>
+          <br>
+          <br>
+          <div class="col-md-6">
+            <% if current_user.present? %>
+              <% if current_user.role == "admin" || current_user.role == "superadmin" %>
+                <%= link_to "Edit this application", edit_application_path(platform: 'web'), class: 'btn btn-default btn-block' %>
+                <% end %>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <% if current_user.present? %>
+              <% if current_user.role == "admin" || current_user.role == "superadmin" %>
+                <%= link_to t('.destroy', :default => t("Delete this application")),
+                                  application_path(@application), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure?" )) }, :class => 'btn btn-default btn-block' %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <h2>What is new?</h2>
+      <hr>
+      <% if @application.notifications.exists? %>
+        <ul class="media-list">
+          <% @application.notifications.each do |notification| %>
+            <li class="media">
+                <div class="media-body">
+                    <h4 class="media-heading">
+                      <%= notification.title %>
+                    </h4>
+                    <p>
+                      <%= notification.content %>
+                    </p>
+                </div>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <h4>No notifications</h4>
+        <br>
+      <% end %>
+      <% if current_user.present? %>
+        <% if current_user.role == "admin" || current_user.role == "superadmin" %>
+          <%= content_tag :a, "Add new notification", href: "#new_notification_form", class: 'btn btn-default', data: {toggle: 'modal'} do %>
+              Add new notification
+              <i class="fa fa-fw fa-plus-circle"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="bootstrap-modal modal fade" id="new_notification_form">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add new notification</h4>
+      </div>
+      <div class="modal-body">
+        <%= render :partial => 'notifications/notification_form' %>
+      </div>
+    </div>
+  </div>
+</div>

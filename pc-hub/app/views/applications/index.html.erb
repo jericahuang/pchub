@@ -1,0 +1,319 @@
+<%- model_class = Application -%>
+<div class="cover" id="home">
+  <div class="background-image-fixed cover-image">
+  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section text-left">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1>Peace Corps</h1>
+                                <p></p>
+                                <p class="hidden-xs text-justify">Lorem ipsum dolor sit amet, consectetur adipisici elit sit am
+                                    <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud eiusmod tem
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <%= link_to 'Sign In', new_user_session_path , class: "btn btn-block btn-danger" %>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <%= link_to 'Sign Up', new_user_registration_path , class: "btn btn-block btn-danger" %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section section-text" id="web-apps">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+              <%= image_tag 'desktop', :class => "img-responsive" %>
+            </div>
+            <div class="col-md-6">
+                <h1 class="brand-blue">Peace Corps Web Applications</h1>
+                <h3>A subtitle</h3>
+                <p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                    nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
+                    enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
+                    felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
+                    elementum semper nisi.
+                </p>
+                <% if current_user.present? %>
+                    <% if current_user.role == "admin" or current_user.role == "superadmin" %>
+                        <%= link_to "Add new web application", new_application_path(platform: 'web'), class: 'btn btn-default btn-block' %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<% if @applications.exists?(platform: 'web') %>
+    <div class="section" id="web-apps">
+        <div class="container">
+            <div class="row">
+                <% if @applications.where(:platform => 'web').count > 4 %>
+                    <div class="carousel slide" id="web-apps-slider">
+                        <div class="carousel-inner thumb-inner">
+                            <div class="item active">
+                                <div class="col-md-3">
+                                    <%= image_tag @applications.where(:platform => 'web').first.slider_image.url, class: "center-block img-responsive" %>
+                                    <h2 class="text-info brand-blue">
+                                        <%= @applications.where(:platform => 'web').first.name %>
+                                    </h2>
+                                    <p class="text-justify brand-blue">
+                                        <%= @applications.where(:platform => 'web').first.short_description %>
+                                    </p>
+
+                                    <%= link_to "Read More", application_path(@applications.where(:platform => 'web').first), class: "btn btn-block btn-success" %>
+
+                                    <%= link_to @applications.where(:platform => 'web').first.repository_link do %>
+                                        <h4 class="text-center text-info brand-blue">
+                                            <i class="fa fa-fw fa-github fa-lg"></i>View on GitHub
+                                        </h4>
+                                    <% end %>
+
+                                    <% if @applications.where(:platform => 'web').first.app_link.present? %>
+                                        <%= link_to @applications.where(:platform => 'web').first.app_link do %>
+                                            <h4 class="text-center text-info brand-blue">
+                                                <i class="fa fa-fw fa-chain"></i>Go to the web page
+                                            </h4>
+                                        <% end %>
+                                    <% else %>
+                                        <h4 class="text-center text-info brand-blue">
+                                            <i class="fa fa-fw fa-cogs"></i>Developing
+                                        </h4>
+                                    <% end %>    
+                                </div>
+                            </div>
+                            <% @applications.where(:platform => 'web').each do |application| %>
+                                <% if @applications.where(:platform => 'web').first != application %>
+                                    <div class="item">
+                                        <div class="col-md-3">
+                                          <%= image_tag application.slider_image, class: "center-block img-responsive" %>
+                                            <h2 class="text-info brand-blue">   
+                                                <%= application.name %>
+                                            </h2>
+                                            <p class="text-justify brand-blue">
+                                                <%= application.short_description %>
+                                            </p>
+                                            <%= link_to "Read More", application_path(application), class: "btn btn-block btn-success" %>
+
+                                            <%= link_to application.repository_link do %>
+                                                <h4 class="text-center text-info brand-blue">
+                                                    <i class="fa fa-fw fa-github fa-lg"></i>View on GitHub
+                                                </h4>
+                                            <% end %>
+                                            <% if application.app_link.present? %>
+                                                <%= link_to application.app_link do %>
+                                                    <h4 class="text-center text-info brand-blue">
+                                                        <i class="fa fa-fw fa-chain"></i>Go to the web page
+                                                    </h4>
+                                                <% end %>
+                                            <% else %>
+                                                <h4 class="text-center text-info brand-blue">
+                                                    <i class="fa fa-fw fa-cogs"></i>Developing
+                                                </h4>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            <% end %> 
+                        </div>
+                        <a class="left carousel-control" href="#web-apps-slider" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#web-apps-slider" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" 
+                                aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                <% else %>
+                    <% @applications.where(:platform => 'web').each do |application| %>
+                        <div class="col-md-3">
+                          <%= image_tag application.slider_image, class: "center-block img-responsive" %>
+                            <h2 class="text-info brand-blue">   
+                                <%= application.name %>
+                            </h2>
+                            <p class="text-justify brand-blue">
+                                <%= application.short_description %>
+                            </p>
+                            <%= link_to "Read More", application_path(application), class: "btn btn-block btn-success" %>
+
+                            <%= link_to application.repository_link do %>
+                                <h4 class="text-center text-info brand-blue">
+                                    <i class="fa fa-fw fa-github fa-lg"></i>View on GitHub
+                                </h4>
+                            <% end %>
+                            <% if application.app_link.present? %>
+                                <%= link_to application.app_link do %>
+                                    <h4 class="text-center text-info brand-blue">
+                                        <i class="fa fa-fw fa-chain"></i>Go to the web page
+                                    </h4>
+                                <% end %>
+                            <% else %>
+                                <h4 class="text-center text-info brand-blue">
+                                    <i class="fa fa-fw fa-cogs"></i>Developing
+                                </h4>
+                            <% end %>
+                        </div>
+                    <% end %> 
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<div class="section section-text" id="mobile-apps">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <%= image_tag 'mobile', :class => "img-responsive" %>
+            </div>
+            <div class="col-md-6">
+                <h1 class="brand-blue">Peace Corps Mobile Applications</h1>
+                <h3>A subtitle</h3>
+                <p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                    nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
+                    enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
+                    felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
+                    elementum semper nisi.</p>
+
+                <% if current_user.present? %>
+                    <% if current_user.role == "admin" or current_user.role == "superadmin" %>
+                        <%= link_to "Add new mobile application", new_application_path(platform: 'mobile'), class: 'btn btn-default btn-block' %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if @applications.exists?(platform: 'android') || @applications.exists?(platform: 'ios') %>
+    <div class="section" id="mobile-apps">
+        <div class="container">
+            <div class="row">
+                <% if @applications.where('platform=? OR platform=?', 'ios', 'android').count > 4 %>
+                    <div class="carousel slide" id="web-apps-slider">
+                        <div class="carousel-inner thumb-inner">
+                            <div class="item active">
+                                <%= image_tag @applications.where('platform=? OR platform=?', 'ios', 'android').first.slider_image.url, class: "center-block img-responsive" %>
+                                <h2 class="text-info brand-blue">
+                                    <%= @applications.where('platform=? OR platform=?', 'ios', 'android').first.name %>
+                                </h2>
+                                <p class="text-justify brand-blue">
+                                    <%= @applications.where('platform=? OR platform=?', 'ios', 'android').first.short_description %>
+                                </p>
+
+                                <%= link_to "Read More", application_path(@applications.where('platform=? OR platform=?', 'ios', 'android').first), class: "btn btn-block btn-success" %>
+
+                                <%= link_to @applications.where('platform=? OR platform=?', 'ios', 'android').first.repository_link do %>
+                                    <h4 class="text-center text-info brand-blue">
+                                        <i class="fa fa-fw fa-github fa-lg"></i>View on GitHub
+                                    </h4>
+                                <% end %>
+
+                                <% if application.app_link.present? %>
+                                    <%= link_to @applications.where('platform=? OR platform=?', 'ios', 'android').first.app_link do %>
+                                        <h4 class="text-center text-info brand-blue">
+                                            <i class="fa fa-fw fa-chain"></i>Go to the app download
+                                        </h4>
+                                    <% end %>  
+                                <% else %>
+                                    <h4 class="text-center text-info brand-blue">
+                                        <i class="fa fa-fw fa-cogs"></i>Developing
+                                    </h4>
+                                <% end %> 
+                            </div>
+                            <% @applications.where('platform=? OR platform=?', 'ios', 'android').each do |application| %>
+                                <% if @applications.where('platform=? OR platform=?', 'ios', 'android').first != application %>
+                                    <div class="item">
+                                        <div class="col-md-3">
+                                          <%= image_tag application.slider_image, class: "center-block img-responsive" %>
+                                            <h2 class="text-info brand-blue">   
+                                                <%= application.name %>
+                                            </h2>
+                                            <p class="text-justify brand-blue">
+                                                <%= application.short_description %>
+                                            </p>
+                                            <%= link_to "Read More", application_path(application), class: "btn btn-block btn-success" %>
+
+                                            <%= link_to application.repository_link do %>
+                                                <h4 class="text-center text-info brand-blue">
+                                                    <i class="fa fa-fw fa-github fa-lg"></i>View on GitHub
+                                                </h4>
+                                            <% end %>
+                                            <% if application.app_link.present? %>
+                                                <%= link_to application.app_link do %>
+                                                    <h4 class="text-center text-info brand-blue">
+                                                        <i class="fa fa-fw fa-chain"></i>Go to the app download
+                                                    </h4>
+                                                <% end %>
+                                            <% else %>
+                                                <h4 class="text-center text-info brand-blue">
+                                                    <i class="fa fa-fw fa-cogs"></i>Developing
+                                                </h4>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            <% end %> 
+                        </div>
+                        <a class="left carousel-control" href="#web-apps-slider" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#web-apps-slider" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                <% else %>
+                    <% @applications.where('platform=? OR platform=?', 'ios', 'android').each do |application| %>
+                        <div class="col-md-3">
+                          <%= image_tag application.slider_image, class: "center-block img-responsive" %>
+                            <h2 class="text-info brand-blue">   
+                                <%= application.name %>
+                            </h2>
+                            <p class="text-justify brand-blue">
+                                <%= application.short_description %>
+                            </p>
+                            <%= link_to "Read More", application_path(application), class: "btn btn-block btn-success" %>
+
+                            <%= link_to application.repository_link do %>
+                                <h4 class="text-center text-info brand-blue">
+                                    <i class="fa fa-fw fa-github fa-lg"></i>View on GitHub
+                                </h4>
+                            <% end %>
+                            <% if application.app_link.present? %>
+                                <%= link_to application.app_link do %>
+                                    <h4 class="text-center text-info brand-blue">
+                                        <i class="fa fa-fw fa-chain"></i>Go to the app download
+                                    </h4>
+                                <% end %>
+                            <% else %>
+                                <h4 class="text-center text-info brand-blue">
+                                    <i class="fa fa-fw fa-cogs"></i>Developing
+                                </h4>
+                            <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>

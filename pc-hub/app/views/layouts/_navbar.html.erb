@@ -1,0 +1,60 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="menu-header">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= image_tag 'Peace_Corps_Logo_Banner_CMYK', class: "brand" %>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home", root_path  %></li>
+            <li><%= link_to "Web Apps", "/applications#web-apps"  %></li>
+            <li><%= link_to "Mobile Apps", "/applications#mobile-apps"  %></li>
+            <li><%= link_to "Forum", "/forum", method: :get  %></li>
+            <% if current_user.present? %>
+              <%= drop_down "Settings" do %>
+                  <%= menu_item "Edit my profile", edit_user_registration_path %>
+                  <% if current_user.role == "admin" || current_user.role == "superadmin" %>
+                    <%= menu_item "Users solicitations", user_list_path, :action => "index", :approved => "false" %>
+                    <%= menu_item "Invite new user", new_user_invitation_path %>
+                  <% end %>
+                  <%= drop_down_divider %>
+                  <%= menu_item "Sign Out", destroy_user_session_path, method: :delete %>
+              <% end %>
+            <% end %>
+          </ul>
+          <% if current_user.present? %>
+            <div class="col-md-5 pull-right">
+              <%= form_tag(user_search_path, :method => "get", id: "search-form", class: "navbar-form") do %>
+                  <div class="input-group long-search-bar">
+                      <%= text_field_tag :search, params[:search], placeholder: "Search users and apps", class: "form-control" %>
+                    <div class="input-group-btn">
+                      <%= button_tag(type: 'submit', class: 'btn btn-default') do %>
+                        <i class="glyphicon glyphicon-search"></i>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
+            </div>    
+          <% else %>
+              <div class="col-md-6 pull-right">
+                <%= form_tag(application_search_path, :method => "get", id: "search-form", class: "navbar-form") do %>
+                    <div class="input-group long-search-bar">
+                        <%= text_field_tag :search, params[:search], placeholder: "Search apps", class: "form-control" %>
+                      <div class="input-group-btn">
+                        <%= button_tag(type: 'submit', class: 'btn btn-default') do %>
+                          <i class="glyphicon glyphicon-search"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>    
+          <% end %>
+        </div>
+      </div>
+    </nav>

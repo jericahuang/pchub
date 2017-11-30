@@ -1,0 +1,24 @@
+<%= bootstrap_form_for(@application) do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_area :description, label: "Long Description", help: "Long description to be shown on the application page", rows: 2 %>
+    <%= f.text_field :short_description, label: "Short Description", help: "Short description to be shown on the homepage slider" %>
+    <%= f.form_group :platform, label: { text: "Operating System" } do %>
+      <%= f.radio_button :platform, "android", label: "Android", inline: true %>
+      <%= f.radio_button :platform, "ios", label: "IOS", inline: true %>
+    <% end %>
+    <div class="row">
+      <div class="col-md-6">
+      <%= f.text_field :app_link, label: "App link", help: "If the app is not on Play Store or Apple Store yet, keep it blank" %>
+      <%= f.file_field :app_image, help: "Image to illustrate the application page" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.text_field :repository_link, help: "Github link" %>
+        <%= f.file_field :slider_image, help: "Image to be shown on the homepage slider" %>
+      </div>
+    </div>   
+    <div class="actions">
+      <%= f.submit "Save", class: "btn btn-success"  %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                applications_path, :class => 'btn btn-default' %>
+    </div>
+<% end %>
