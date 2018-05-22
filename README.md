@@ -2,7 +2,22 @@
 
 ### Background
 
-Systers has partnered with Peace Corps to develop several web and mobile applications. All of the applications have separate repos on our GitHub page, but we don't have a central HUB for Peace Corps staff and volunteers to access all of the applications.
+Systers has partnered with Peace Corps to develop several web and mobile applications. We've also created a Mobile App Control Center (MACC) to push notifications and updates from web application to mobile app. All of the applications have separate repos in our Github organization, but we don't have a central hub for Peace Corps staff and volunteers to access all of the applications. The next phase in bringing all of the applications together is the Peace Corps Hub.
+
+#### Peace Corps apps
+
+###### Mobile Applications
+Malaria [Android](https://github.com/systers/malaria-app-android) [iOS](https://github.com/systers/malaria-app-ios)  
+PeaceTrack [Android](https://github.com/systers/peacetrack-android) [iOS](https://github.com/systers/peacetrack-ios)  
+FirstAide [Android](https://github.com/systers/FirstAide-Android) [iOS](https://github.com/systers/FirstAide-iOS)
+RealTrack [Android](https://github.com/systers/realtrack-android) [iOS](https://github.com/systers/realtrack-ios)
+[Mobile App Control Center](https://github.com/systers/app-web-server)
+
+###### Web Applications
+[Ushahidi](https://github.com/systers/crowdmap)  
+[Photo Language Translation](https://github.com/systers/language-translation)
+[FirstAide](https://github.com/systers/FirstAide-web)
+[PC Prep Kit](https://github.com/systers/PC-Prep-Kit)
 
 ### Installation Guide
 
@@ -47,28 +62,25 @@ To verify that you have everything installed correctly, you should be able to ru
 
     $ rails --version
 
-### Goal of the Hack
+### Project History and Goals
 
-The goal of the hackathon is to create a web application that will be the Peace Corps App HUB. The hub should have login access, but also include access to all of our Peace Corps products. The language you choose must be open source as to keep to the initiative of open government initiative of the Peace Corps.
+This project was started in the Qualcomm EmpowHERment Hackathon. The goal during the hackathon was to create a web application that will be the Peace Corps app hub. The hub should have login access and also include access to all of our Peace Corps web and mobile app projects. It was specified that it must be implemented in an open source language in order to align with the open government initiative of the Peace Corps.
 
-Note: We do have mobile products. How would users view/access mobile products?
+### Deliverables from the Hackathon
+[PCHub Winners site (initial design)](http://devpost.com/software/pchub)  
+[PCHub Detail Design Documentation](https://docs.google.com/presentation/d/1D_6P7iuT4En1I_R66iP0-BW9zEIvjs6khLF324Jia-M/edit#slide=id.g5baf8cfec_0_13)  
+[PCHub Demo site](http://peacecorpshub.weebly.com/home.html)  
 
-List of all of Systers Peace Corps projects can be found here >> [Systers GitHub page](http://systers.github.io/)
+### After the Hackathon
+PC Hub has been in the continuing works by independent contributors, as well as Open Source Day and Google Summer of Code. We invite you to contribute. You can submit a PR for your work against the “develop” branch on Systers PCHub GitHub repo.
 
-The Peace Corps Hub should include at the highest level access to the following.
-1. Mobile App Control Center
-2. Ushahidi Crowdmap (this contains only one Ushahidi application.
-3. Photo Language Translation
+PC Hub has been a project in Systers Google Summer of Code throughout the years. Please visit the GSoC wiki for each year so that you can see what the students have worked on. This will bring you up-to-date on the current state of the project.
 
-The Mobile App Control Center should access the following Peace Corps mobile applications.
-1. PeaceTrack
-2. Malaria
-3. PCSA
+[GSOC 2014](https://github.com/systers/pchub/wiki/GSoC-2014-Vaibhavi-Desai)  
 
-All this work was performed during Systers Google Summer of Code 2014 and 2015. Please see the GSoC assignments so for each year so that you can see what the students have worked on for each of the project. This is not a requirement, but you may want to read background on the projects.
+[GSoC 2016](https://github.com/systers/pchub/wiki/GSoC-2016-Izabela-Cardoso-&-Daisy-Nkweteyim) 
 
-[GSOC 2014 Assignments](http://systers.org/systers-dev/doku.php/gsoc2014assignments)  
-[GSoC 2015 Assignments](http://systers.org/systers-dev/doku.php/gsoc2015assignments)  
+[GSoC 2018](https://github.com/systers/pchub/wiki/GSoC-2018-Jerica-Huang)
 
 ### Requirements for the Project
 
@@ -93,45 +105,3 @@ Users can be - Administrators (Level 3, all access to everything, configuration,
 3. Notification area where administrators can add important information about updates to the applications or just general information
 
 4. Forum area would be a nice to have a forum feed similar to Facebook/Twitter/Google+ for people to - Start a discussion/topic - Comment on those discussions/topics - Chat feature where people can chat with other PC staff/volunteers who are LOGGED IN (Nice to have)
-
-
-#### After The Hack
-
-After the hackathon, we would love for all the participants to continue to collaborate with Systers and others who will contribute and continue the work that you are doing. It would be great if you can submit a PR for your design work against the “develop” branch on Systers PCHub GitHub repo.
-
-## Peace Corps Hub
-Systers GHCOSD Mentor: Sandi Giver, Patrick Choquette, Gabe Krieshok, Sheila Campell
-
-#### Project Description:
-We've built several web and mobile applications for Peace Corps. We've also created a Mobile App Control Center (MACC) to push notifications and updates from web application to mobile app. However, the next phase in bringing all of the applications together is a Peace Corps Hub. 
-
-We have initial design of the web application from Qualcomm EmpowHerment Hackathon. Please visit the [winners' page](http://devpost.com/software/pchub) for initial design.
-
-Skills desired or want to learn: Python/Django, html, php
-
-[PCHub Repo](https://github.com/systers/pchub)
-
-#### Environment Setup:
-The app-web-server server will host this application so please visit environment repo and choose [app-web-server](https://github.com/systers/app-web-server) for your environment setup.
-
-#### Resources
-[PCHub Winners site](http://devpost.com/software/pchub)  
-[PCHub Detail Design Documentation](https://docs.google.com/presentation/d/1D_6P7iuT4En1I_R66iP0-BW9zEIvjs6khLF324Jia-M/edit#slide=id.g5baf8cfec_0_13)  
-[PCHub Demo site](http://peacecorpshub.weebly.com/home.html)  
-
-#### GHC15 OSD Tasks:
-1. Create css template as specified in detail design documentation.
-2. Create home page with access buttons.
-3. Create buttons to go to each application we've created for Peace Corps. See list below.
- 
-##### Peace Corps apps
-
-###### Mobile Applications
-Malaria [Android](https://github.com/systers/malaria-app-android) [iOS](https://github.com/systers/malaria-app-ios)  
-PeaceTrack [Android](https://github.com/systers/peacetrack-android) [iOS](https://github.com/systers/peacetrack-ios)  
-Peace Corps Sexual Assault [Android](https://github.com/systers/PCSA) iOS - TBA  
-
-###### Web Applications
-[Ushahidi](https://github.com/systers/crowdmap)  
-[Photo Language Translation](https://github.com/systers/language-translation)  
-[Mobile App Control Center](https://github.com/systers/app-web-server)  
