@@ -5,11 +5,11 @@
     <%= f.text_field :short_description, label: "Short Description", help: "Short description to be shown on the homepage slider" %>
     <div class="row">
 	    <div class="col-md-6">
-	    <%= f.text_field :app_link, label: "Website link", help: "Keep it blank if the application doesn't have a website yet" %>
+	    <%= f.url_field :app_link, label: "Website link", help: "Keep it blank if the application doesn't have a website yet" %>
 	    <%= f.file_field :app_image, help: "Image to illustrate the application page" %>
 	    </div>
 	    <div class="col-md-6">
-		    <%= f.text_field :repository_link, help: "Github link" %>
+		    <%= f.url_field :repository_link, help: "Github link" %>
 		    <%= f.file_field :slider_image, help: "Image to be shown on the homepage slider" %>
 	    </div>
     </div>   

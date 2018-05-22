@@ -8,11 +8,11 @@
     <% end %>
     <div class="row">
       <div class="col-md-6">
-      <%= f.text_field :app_link, label: "App link", help: "If the app is not on Play Store or Apple Store yet, keep it blank" %>
+      <%= f.url_field :app_link, label: "App link", help: "If the app is not on Play Store or Apple Store yet, keep it blank" %>
       <%= f.file_field :app_image, help: "Image to illustrate the application page" %>
       </div>
       <div class="col-md-6">
-        <%= f.text_field :repository_link, help: "Github link" %>
+        <%= f.url_field :repository_link, help: "Github link" %>
         <%= f.file_field :slider_image, help: "Image to be shown on the homepage slider" %>
       </div>
     </div>   
