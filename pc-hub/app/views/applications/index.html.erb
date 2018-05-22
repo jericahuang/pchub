@@ -15,12 +15,16 @@
                                     <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud eiusmod tem
                                 </p>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <%= link_to 'Sign In', new_user_session_path , class: "btn btn-block btn-danger" %>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <%= link_to 'Sign Up', new_user_registration_path , class: "btn btn-block btn-danger" %>
-                                    </div>
+                                    <% if not current_user.present? %>
+                                        <div class="col-md-6">
+                                            <%= link_to 'Sign In', new_user_session_path , class: "btn btn-block btn-danger" %>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <%= link_to 'Sign Up', new_user_registration_path , class: "btn btn-block btn-danger" %>
+                                        </div>
+                                    <% else %>
+                                        <h3>Welcome, <%= current_user.name %></h3>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>
