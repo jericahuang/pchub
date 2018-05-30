@@ -62,6 +62,10 @@ To verify that you have everything installed correctly, you should be able to ru
 
     $ rails --version
 
+### Running tests
+To run tests, run the following command:
+    $ rake test
+
 ### Project History and Goals
 
 This project was started in the Qualcomm EmpowHERment Hackathon. The goal during the hackathon was to create a web application that will be the Peace Corps app hub. The hub should have login access and also include access to all of our Peace Corps web and mobile app projects. It was specified that it must be implemented in an open source language in order to align with the open government initiative of the Peace Corps.

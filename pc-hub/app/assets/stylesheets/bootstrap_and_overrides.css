@@ -7,9 +7,9 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-@import "twitter/bootstrap/glyphicons.less";
+/* @import "twitter/bootstrap/glyphicons.less"; */
 
-@import 'twitter/bootstrap';
+/* @import 'twitter/bootstrap'; */
 
 .navbar-default {
     background-color: rgba(255, 255, 255, 0.98);

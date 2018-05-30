@@ -11,9 +11,9 @@ one:
   additional_information: MyText
 
 two:
-  name: MyString
+  name: MyString2
   nickname: MyString
-  email: MyString
+  email: MyString2
   country: MyString
   state_or_province: MyString
   city: MyString

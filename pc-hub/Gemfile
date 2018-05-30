@@ -55,6 +55,8 @@ group :development, :test do
 
   # Avoid the brittleness of fixtures
   gem 'factory_girl_rails'
+
+  gem 'codacy-coverage', require: false
 end
 
 group :development do
