@@ -6,17 +6,17 @@ class ApplicationController < ActionController::Base
   before_filter :update_sanitized_params, if: :devise_controller?
 
   def update_sanitized_params
+      devise_parameter_sanitizer.permit(:sign_up, keys:[:name,:email, :email_confirmation, 
+        :password,:password_confirmation,:nickname, :city, :state_or_province, 
+          :country, :profile_link, :additional_information, :role, :confirmation_token, 
+          :confirmed_at, :confirmation_sent_at])
 
-      devise_parameter_sanitizer.for(:sign_up) do |u| 
-        u.permit(:name,:email, :email_confirmation, :password,
-          :password_confirmation,:nickname, :city, :state_or_province, 
-          :country, :profile_link, :additional_information, :role)
-      end
+      devise_parameter_sanitizer.permit(:account_update, keys:[:email, :password, 
+        :password_confirmation, :current_password, :name,
+          :state_or_province, :country, :profile_link, :additional_information, :role, 
+          :confirmation_token, 
+          :confirmed_at, :confirmation_sent_at])
 
-      devise_parameter_sanitizer.for(:account_update) do |u| 
-        u.permit(:email, :password, :password_confirmation, :current_password, :name,
-          :state_or_province, :country, :profile_link, :additional_information, :role)
-      end 
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
@@ -24,16 +24,30 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
+    '''
     devise_parameter_sanitizer.for(:invite).concat [:name, :nickname, :city, 
-    :state_or_province, :country, :profile_link, :additional_information, :role, :approved]
+    :state_or_province, :country, :profile_link, :additional_information, :role, :approved]'''
+    
+    devise_parameter_sanitizer.permit(:invite, keys:[:name, :nickname, :city, 
+    :state_or_province, :country, :profile_link, :additional_information, :role, :approved])
 
+    '''
     devise_parameter_sanitizer.for(:accept_invitation).concat [:name, :email, :email_confirmation, 
       :nickname, :city, :state_or_province, :country, :profile_link, :additional_information]
+      '''
 
+    devise_parameter_sanitizer.permit(:accept_invitation,keys:[:name, :email, :email_confirmation, 
+      :nickname, :city, :state_or_province, :country, :profile_link, :additional_information])  
+      '''
     devise_parameter_sanitizer.for(:accept_invitation) do |u|
       u.permit(:name, :email, :email_confirmation, :nickname, :city, :state_or_province,
              :country, :profile_link, :additional_information, :invitation_token, 
-             :password, :password_confirmation)
-    end
+             :password, :password_confirmation)'''
+
+    devise_parameter_sanitizer.permit(:accept_invitation, keys:[:name, :email, :email_confirmation, 
+      :nickname, :city, :state_or_province,
+             :country, :profile_link, :additional_information, :invitation_token, 
+             :password, :password_confirmation, :confirmation_token, 
+          :confirmed_at, :confirmation_sent_at])  
   end
 end

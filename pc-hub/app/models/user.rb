@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable, :invitable,
+    devise :database_authenticatable, :registerable, :invitable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :validate_on_invite => true
         
     validates :name, presence: true
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     def to_s
         name
     end
+
 
     def self.search(search)
         where("name LIKE ?", "%#{search}%") 
@@ -47,9 +48,16 @@ class User < ActiveRecord::Base
     def inactive_message 
         if !approved? 
             :not_approved 
+        elsif confirmed_at.nil? || confirmed_at.empty?
+            :unconfirmed
         else 
             super 
         end 
+    end
+
+    protected
+    def confirmation_required?
+      true
     end
 
     private

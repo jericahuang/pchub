@@ -2,23 +2,23 @@ require 'spec_helper'
 
 describe User do
   it "has a valid factory" do
-    expect(FactoryGirl.create(:user)).to be_valid
+    expect(FactoryBot.create(:user)).to be_valid
   end
 
   it "is invalid without a name" do
-    expect(FactoryGirl.build(:user, name: nil)).to_not be_valid
+    expect(FactoryBot.build(:user, name: nil)).to_not be_valid
   end
 
   it "is invalid without a country" do
-    expect(FactoryGirl.build(:user, country: nil)).to_not be_valid
+    expect(FactoryBot.build(:user, country: nil)).to_not be_valid
   end
 
   it "is invalid without a city" do
-    expect(FactoryGirl.build(:user, city: nil)).to_not be_valid
+    expect(FactoryBot.build(:user, city: nil)).to_not be_valid
   end
 
   it "is invalid without a email" do
-    expect(FactoryGirl.build(:user, email: nil)).to_not be_valid
+    expect(FactoryBot.build(:user, email: nil)).to_not be_valid
   end
 
   it "it is invalid with a duplicate email address" do
@@ -43,11 +43,11 @@ describe User do
   end
 
   it "is invalid without a role" do
-    expect(FactoryGirl.build(:user, role: nil)).to_not be_valid
+    expect(FactoryBot.build(:user, role: nil)).to_not be_valid
   end
 
   it "is invalid without a password" do
-    expect(FactoryGirl.build(:user, password: nil)).to_not be_valid
+    expect(FactoryBot.build(:user, password: nil)).to_not be_valid
   end
 
   #TODO incoporate searching for a single letter
