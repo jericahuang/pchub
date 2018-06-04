@@ -34,22 +34,26 @@ class User < ActiveRecord::Base
     end
 
     def active_for_authentication?
-        if self.role? :admin or self.role? :superadmin
-            if self.created_by_invite?
-                self.approved = true
+        if confirmed_at.nil?
+            self.approved = false
+        else    
+            if self.role? :admin or self.role? :superadmin
+                if self.created_by_invite?
+                    self.approved = true
+                else
+                    self.approved = super && approved? 
+                end
             else
-                self.approved = super && approved? 
+                self.approved = true
             end
-        else
-            self.approved = true
         end
     end
 
     def inactive_message 
-        if !approved? 
-            :not_approved 
-        elsif confirmed_at.nil? || confirmed_at.empty?
+        if confirmed_at.nil?
             :unconfirmed
+        elsif !approved? 
+            :not_approved 
         else 
             super 
         end 
