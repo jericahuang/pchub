@@ -9,8 +9,8 @@ Systers has partnered with Peace Corps to develop several web and mobile applica
 ###### Mobile Applications
 Malaria [Android](https://github.com/systers/malaria-app-android) [iOS](https://github.com/systers/malaria-app-ios)  
 PeaceTrack [Android](https://github.com/systers/peacetrack-android) [iOS](https://github.com/systers/peacetrack-ios)  
-FirstAide [Android](https://github.com/systers/FirstAide-Android) [iOS](https://github.com/systers/FirstAide-iOS)
-RealTrack [Android](https://github.com/systers/realtrack-android) [iOS](https://github.com/systers/realtrack-ios)
+FirstAide [Android](https://github.com/systers/FirstAide-Android) [iOS](https://github.com/systers/FirstAide-iOS)  
+RealTrack [Android](https://github.com/systers/realtrack-android) [iOS](https://github.com/systers/realtrack-ios)  
 [Mobile App Control Center](https://github.com/systers/app-web-server)
 
 ###### Web Applications
