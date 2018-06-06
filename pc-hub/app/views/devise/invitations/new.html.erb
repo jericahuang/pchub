@@ -5,7 +5,7 @@
 				<h2><%= t "devise.invitations.new.header" %></h2>
 			</div>
 
-			<%= bootstrap_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>			
+			<%= bootstrap_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
 
 				<div class = "row">
     				<div class = "col-md-6">
@@ -14,14 +14,14 @@
 						<% resource.class.invite_key_fields.each do |field| -%>
 							<%= f.text_field field %>
 						<% end -%>
-					    <%= f.text_area :additional_information, label: "Additionial Information (Optional)", rows: 5 %>
-					    
+					    <%= f.text_area :additional_information, label: "Additional Information (Optional)", rows: 5 %>
+
 					</div>
 				    <div class = "col-md-6">
 				    	<%= f.text_field :city %>
 				    	<%= f.text_field :state_or_province, label: "State or Province (Optional)"%>
 				    	<%= f.form_group :country, label: {text: "Country"} do %>
-				    		<%= f.country_select :country, { include_blank: "Select a country" }, 
+				    		<%= f.country_select :country, { include_blank: "Select a country" },
 				        		{ class: "form-control selectpicker" } %>
 				    	<% end %>
 				    	<%= f.url_field :profile_link, label: "Profile Link (Optional)" %>

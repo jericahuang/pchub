@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
     validates :name, presence: true
     validates :country, presence: true, unless: -> { from_omniauth? }
     validates :city, presence: true, unless: -> { from_omniauth? }
-    validates :email, confirmation: true
+    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }, unless: -> { from_omniauth? }
     validates :role, presence: true
 
     def self.from_omniauth(auth)

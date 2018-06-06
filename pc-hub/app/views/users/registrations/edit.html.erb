@@ -36,7 +36,7 @@
                 { class: "form-control selectpicker" } %>
              <% end %>
             <%= f.url_field :profile_link, label: "Profile Link (Optional)", :readonly => @user.from_omniauth?%>
-            <%= f.text_area :additional_information, label: "Additionial Information (Optional)", rows: 3, :readonly => @user.from_omniauth?%>
+            <%= f.text_area :additional_information, label: "Additional Information (Optional)", rows: 3, :readonly => @user.from_omniauth?%>
             <% if !@user.from_omniauth? %>
               <%= f.password_field :current_password, help: "We need your current password to confirm your changes", autocomplete: "off" %>
             <% end %>
