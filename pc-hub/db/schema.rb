@@ -301,6 +301,10 @@ ActiveRecord::Schema.define(version: 20180531213250) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "github"
+    t.string   "gitAvatar"
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved"
