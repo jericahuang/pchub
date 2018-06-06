@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
     validates :name, presence: true
     validates :country, presence: true
     validates :city, presence: true
-    validates :email, confirmation: true
-    validates :role, presence: 
+    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }
+    validates :role, presence: true
 
     if self.created_by_invite == true
         validate :inviter_has_permission_to_invite
