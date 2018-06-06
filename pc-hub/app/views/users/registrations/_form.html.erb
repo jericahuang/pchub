@@ -17,7 +17,7 @@
       <%= f.text_field :city %>
       <%= f.text_field :state_or_province, label: "State or Province (Optional)"%>
       <%= f.form_group :country, label: {text: "Country"} do %>
-        <%= f.country_select :country, { include_blank: "Select a country" }, 
+        <%= f.country_select :country, { include_blank: "Select a country" },
           { class: "form-control selectpicker" } %>
        <% end %>
       <%= f.url_field :profile_link, label: "Profile Link (Optional)" %>
@@ -27,4 +27,10 @@
   <div class="actions">
       <%= f.submit "Save", class: "btn btn-success"  %>
   </div>
+
+    <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+    <% end -%>
+  <% end -%>
 <% end %>
