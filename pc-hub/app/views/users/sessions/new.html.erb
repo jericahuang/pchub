@@ -6,14 +6,7 @@
               <%= link_to "New here? Create an account!", new_user_registration_path,
                 class: "brand-blue" %>
           </div>
-            <!--
-
-
-
-
-            -->
-
-            <div id='tabs'>
+          <div id='tabs'>
             <ul>
               <li><a href='#tabs-1'><span class='fa fa-globe'></span>Peace Corps Members</a></li>
               <li><a href='#tabs-2'><span class='fa fa-github'></span>Developers</a></li>
@@ -35,9 +28,10 @@
                       class: "brand-blue" %>
                     <br><br>
                     <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "brand-blue"  %>
+              <% end %>      
               </article>
               <article id='tabs-2'>
-                <h3>Developers Sign In via Github OAuth</h3>
+                <h3>Developers: Sign in via Github OAuth</h3>
                   <%= link_to omniauth_authorize_path(resource_name, 'github') do %>
                     <div class="github-btn-dark">
                     	<span class="github-svg-container">
@@ -49,7 +43,6 @@
                     	</span>
                     	<p class="btn-text">Sign in with GitHub</p>
                     </div>
-                    <% end %>
                 <% end %>
               </article>
             </section>
