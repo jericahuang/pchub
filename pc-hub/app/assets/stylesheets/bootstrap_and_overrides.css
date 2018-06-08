@@ -11,6 +11,23 @@
 
 /* @import 'twitter/bootstrap'; */
 
+html{
+  height:100%;
+}
+
+body{
+  height:100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -162px; /* the bottom margin is the negative value of the footer's height */
+}
+
+footer, .push { height:162px;}
+
 .navbar-default {
     background-color: rgba(255, 255, 255, 0.98);
 }
@@ -223,8 +240,6 @@ h3{
   margin: 0.5em 0;
   border-bottom: 1px solid rgba(126, 149, 180, 0.5);
   padding-bottom: 0.05em;
-  font-size: 2.5em;
-  font-weight: 300;
 }
 #tabs h4 {
   margin: 0.25em 0;
@@ -240,7 +255,6 @@ h3{
   color: #aa7786;
   text-transform: lowercase;
 }
-
 .tabs-content {
   background: #fff;
 }
@@ -288,7 +302,7 @@ h3{
 }
 
 .github-btn-light,
-.github-btn-dark {
+.github-btn {
 	margin: 8px;
 	padding: 0 11px;
 	position: relative;
@@ -310,20 +324,17 @@ h3{
 	transition: all 400ms ease 0s;
 }
 
-a.github-btn-light,
-a.github-btn-dark {
+a.github-btn {
 	color: transparent;
 }
 
-button.github-btn-light,
-button.github-btn-dark {
+button.github-btn {
 	text-align: initial;
 	border: none;
 	-webkit-appearance: none;
 }
 
-button.github-btn-light .btn-text,
-button.github-btn-dark .btn-text {
+button.github-btn .btn-text {
 	margin-top: 0;
 }
 
@@ -331,7 +342,7 @@ button.github-btn-light .github-icon-svg {
 	margin-top: 0;
 }
 
-.github-btn-dark {
+.github-btn {
 	background-color: #913399;
   display: block;
   margin:auto;
@@ -346,7 +357,7 @@ button.github-btn-light .github-icon-svg {
 	height: 18px;
 }
 
-.github-btn-dark .github-icon-svg {
+.github-btn .github-icon-svg {
 	position: absolute;
 	margin-top: 10px;
 	margin-left: 10px;
@@ -354,7 +365,7 @@ button.github-btn-light .github-icon-svg {
 	height: 18px;
 }
 
-.github-btn-dark .github-svg-container {
+.github-btn .github-svg-container {
 	position: absolute;
 	height: 38px;
 	width: 38px;
@@ -364,7 +375,7 @@ button.github-btn-light .github-icon-svg {
 	border-radius: 1px;
 }
 
-.github-btn-dark .btn-text {
+.github-btn .btn-text {
 	margin: 11px 0 0 40px;
 	font-size: 14px;
 	letter-spacing: .4px;
@@ -372,12 +383,15 @@ button.github-btn-light .github-icon-svg {
 	font-weight: 500;
 }
 
+#tabs a:hover, a:active{
+  text-decoration: none;
+}
 
-.github-btn-dark .btn-text {
+.github-btn .btn-text {
 	color: #fff;
 }
 
-.github-btn-dark:active {
+.github-btn:active {
 	-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .24);
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .24);
 }

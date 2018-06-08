@@ -28,12 +28,12 @@
                       class: "brand-blue" %>
                     <br><br>
                     <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "brand-blue"  %>
-              <% end %>      
+              <% end %>
               </article>
               <article id='tabs-2'>
                 <h3>Developers: Sign in via Github OAuth</h3>
                   <%= link_to omniauth_authorize_path(resource_name, 'github') do %>
-                    <div class="github-btn-dark">
+                    <div class="github-btn">
                     	<span class="github-svg-container">
                     		<span class="github-icon-svg">
                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48">
@@ -52,6 +52,6 @@
 </div>
 <script type="text/javascript">
   $(function() {
-      $( "#tabs" ).tabs();
+      $( "#tabs" ).tabs(); //needed here because of turbolinks
   });
 </script>
