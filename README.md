@@ -9,8 +9,8 @@ Systers has partnered with Peace Corps to develop several web and mobile applica
 ###### Mobile Applications
 Malaria [Android](https://github.com/systers/malaria-app-android) [iOS](https://github.com/systers/malaria-app-ios)  
 PeaceTrack [Android](https://github.com/systers/peacetrack-android) [iOS](https://github.com/systers/peacetrack-ios)  
-FirstAide [Android](https://github.com/systers/FirstAide-Android) [iOS](https://github.com/systers/FirstAide-iOS)
-RealTrack [Android](https://github.com/systers/realtrack-android) [iOS](https://github.com/systers/realtrack-ios)
+FirstAide [Android](https://github.com/systers/FirstAide-Android) [iOS](https://github.com/systers/FirstAide-iOS)  
+RealTrack [Android](https://github.com/systers/realtrack-android) [iOS](https://github.com/systers/realtrack-ios)  
 [Mobile App Control Center](https://github.com/systers/app-web-server)
 
 ###### Web Applications
@@ -62,8 +62,40 @@ To verify that you have everything installed correctly, you should be able to ru
 
     $ rails --version
 
+#### 4. Installing Dependencies
+
+ImageMagick is a dependency for this project. If you don't have it installed, install it by following the steps here:
+
+[https://www.imagemagick.org/script/download.php](https://www.imagemagick.org/script/download.php)
+
+### Running the App
+
+Download or clone the app to your desktop.
+cd into the pchub/pc-hub directory:
+
+    $ cd path_to_downloaded_pchub_repo/pc-hub
+
+Install the gems by running:
+
+    $ bundle install
+    
+Set up the database by running:
+
+    $ rake db:setup
+    
+Launch the app server by running:
+
+    $ rails server
+    
+Navigate to [localhost:3000](http://localhost:3000/) on your web browser.
+
+Update the gems to their latest versions, if needed, by running:
+
+    $ bundle update
+
 ### Running tests
-To run tests, run the following command:
+To run tests, run the following command:  
+
     $ rake test
 
 ### Project History and Goals
