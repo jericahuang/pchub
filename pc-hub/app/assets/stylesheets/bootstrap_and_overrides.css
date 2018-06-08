@@ -147,3 +147,237 @@
 h3{
   text-align: center;
 }
+
+#tabs {
+  margin: 1em auto;
+}
+#tabs ul {
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 0;
+  -moz-column-gap: 0;
+  column-gap: 0;
+}
+#tabs ul::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+#tabs ul li {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #f4f4f3;
+  border-bottom: 1px solid #e5e5e2;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  text-align: center;
+}
+#tabs ul li:first-child {
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  border-right: 1px solid #e5e5e2;
+}
+#tabs ul li:last-child {
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-right-radius: 3px;
+  border-left: 1px solid #e5e5e2;
+}
+#tabs ul li a {
+  display: block;
+  padding: 1em;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  font-size: 0.85em;
+  color: #6a6a6a;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#tabs ul li span {
+  display: block;
+  margin-bottom: 0.75em;
+}
+#tabs ul .ui-tabs-active {
+  background: #fff;
+  border-bottom: none;
+}
+#tabs ul .ui-tabs-active a {
+  color: #000;
+}
+#tabs ul .ui-tabs-active span.fa-github {
+  color: purple;
+}
+#tabs ul .ui-tabs-active span.fa-globe {
+  color: mediumblue;
+}
+#tabs h3 {
+  margin: 0.5em 0;
+  border-bottom: 1px solid rgba(126, 149, 180, 0.5);
+  padding-bottom: 0.05em;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+#tabs h4 {
+  margin: 0.25em 0;
+  font-size: 1.35em;
+  color: #000;
+  font-weight: 700;
+}
+#tabs .tagline {
+  display: block;
+  margin-top: 1.25em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2em;
+  color: #aa7786;
+  text-transform: lowercase;
+}
+
+.tabs-content {
+  background: #fff;
+}
+.tabs-content article {
+  padding: 1em;
+}
+.tabs-content article p {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 38px;
+}
+.tabs-content article .readmore {
+  display: block;
+  margin-top: 1.5em;
+  padding-top: 0.25em;
+  border-top: 1px solid rgba(126, 149, 180, 0.5);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2em;
+}
+.tabs-content article .readmore::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.tabs-content article .readmore a {
+  display: block;
+  margin: 1em 0;
+  float: right;
+  color: #aa7786;
+  text-decoration: none;
+}
+.tabs-content article .readmore a:hover {
+  color: #925c6c;
+}
+.tabs-content article .readmore span {
+  padding-left: 1em;
+  vertical-align: middle;
+}
+.tabs-content article img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+.tabs-content article{
+  font-family: Helvetica;
+}
+
+.github-btn-light,
+.github-btn-dark {
+	margin: 8px;
+	padding: 0 11px;
+	position: relative;
+	display: inline-block;
+	height: 40px;
+	cursor: pointer;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition: all 400ms ease 0s;
+	-moz-transition: all 400ms ease 0s;
+	-ms-transition: all 400ms ease 0s;
+	-o-transition: all 400ms ease 0s;
+	transition: all 400ms ease 0s;
+}
+
+a.github-btn-light,
+a.github-btn-dark {
+	color: transparent;
+}
+
+button.github-btn-light,
+button.github-btn-dark {
+	text-align: initial;
+	border: none;
+	-webkit-appearance: none;
+}
+
+button.github-btn-light .btn-text,
+button.github-btn-dark .btn-text {
+	margin-top: 0;
+}
+
+button.github-btn-light .github-icon-svg {
+	margin-top: 0;
+}
+
+.github-btn-dark {
+	background-color: #913399;
+  display: block;
+  margin:auto;
+  margin-top:30px;
+  width:210px;
+}
+
+.github-btn-light .github-icon-svg {
+	position: absolute;
+	margin-top: 10px;
+	width: 18px;
+	height: 18px;
+}
+
+.github-btn-dark .github-icon-svg {
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 18px;
+	height: 18px;
+}
+
+.github-btn-dark .github-svg-container {
+	position: absolute;
+	height: 38px;
+	width: 38px;
+	left: 1px;
+	top: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+}
+
+.github-btn-dark .btn-text {
+	margin: 11px 0 0 40px;
+	font-size: 14px;
+	letter-spacing: .4px;
+	font-family: Roboto;
+	font-weight: 500;
+}
+
+
+.github-btn-dark .btn-text {
+	color: #fff;
+}
+
+.github-btn-dark:active {
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .24);
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .24);
+}

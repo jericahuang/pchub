@@ -1,10 +1,25 @@
 <div class="section">
     <div class="row">
         <div class="container">
-            <div class="col-md-6">
-                <div class="page-header">
-                    <h2>Sign In</h2>
-                </div>
+          <div class="page-header">
+              <h2>Sign In</h2>
+              <%= link_to "New here? Create an account!", new_user_registration_path,
+                class: "brand-blue" %>
+          </div>
+            <!--
+
+
+
+
+            -->
+
+            <div id='tabs'>
+            <ul>
+              <li><a href='#tabs-1'><span class='fa fa-globe'></span>Peace Corps Members</a></li>
+              <li><a href='#tabs-2'><span class='fa fa-github'></span>Developers</a></li>
+            </ul>
+            <section class='tabs-content'>
+              <article id='tabs-1'>
                 <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                     <%= f.email_field :email, autofocus: true %>
                     <%= f.password_field :password, autocomplete: "off" %>
@@ -19,18 +34,31 @@
                     <%= link_to "Forgot your password?", new_password_path(resource_name),
                       class: "brand-blue" %>
                     <br><br>
-                    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "brand-blue"  %><br />
-                    <br><br>
-                    <%= link_to "New here? Create an account!", new_user_registration_path,
-                      class: "brand-blue" %>
-
-                    <%- if devise_mapping.omniauthable? %>
-                      <%- resource_class.omniauth_providers.each do |provider| %>
-                        <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-                      <% end -%>
-                    <% end -%>
+                    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "brand-blue"  %>
+              </article>
+              <article id='tabs-2'>
+                <h3>Developers Sign In via Github OAuth</h3>
+                  <%= link_to omniauth_authorize_path(resource_name, 'github') do %>
+                    <div class="github-btn-dark">
+                    	<span class="github-svg-container">
+                    		<span class="github-icon-svg">
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48">
+                          <image width="48" height="48" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAQAAAACNCElAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiBggCERZ5JY9JAAAE80lEQVRIx52V249dYxTAf99l733OXEuZtAgpUlRaY3gg8SKRSERpCVIqcYtLqBCJByGR+AM8uFdE4lbinTaReNIiTZVWXepSRmeYMWfOZZ/L3vu7eDi3fTozKdZ+2etb6/t9a6+9vrWEpystykgcIElQhJPBNcFler1aK0cRrmr/ND9mB5JP0gMg0Eg8EDHeI4gTYRZDNBw9WNweTrKspN+03olfdbUQgR+A4XtPkz+ZYZryY/ZvfxKxpcoTs8zwF+UcYQA2zfwFyRcnA3Ul3f/XhuMrwWLmb/D236K899750k1zy8Ec6fb/AupKfJddCjPX/x+U996bzT2YxWLIznH9XBy1tZP+gHp6tP+x2boMg4EGDeqYIz3Uod85PrawrbVvJVDyZWn7zPhxsv292H6o06KJzrAUdqiLuqVi9mhENd4V7xp7oLjNHMoOuxlVATsu1wYXB5PND+svOgSG5u7Ry9p71Hr5eON5hWjgoqGyKHRhi4+WXwiReBzgEXgKQAsBCDwaiSRj5P7R17q7XBqvEk2ZoR/po0COdotZodDozub2m0IBhoQMP5rbFUY7LNKgHspflsLWAgEKhWc58SgiQiKiLfl1/aBH60l9Xn4xfG8CARgW8IglKM84QVt5l6v6FrVOTEmuyzu7fcnzHotDLBubR+NISUlovuo+zduC63Q4lV9oPNdEtdsJYklcAIqkc4jFPzd8dc4ypdX63Llpa68b2OgGQAKFI+l+Be7zoaYo9rzP1erMvrOZrVXoxSOAEI1DYXBILBZH18NBc3w67AWjTtcyVxYYj0f28iNIMTgMRQp4EgwSern0YHJxj2jv+5lRq0YCl8merqmyiEQxRgAoNH2rB9SqfHVIX+9rcrVc0+sAOCwChUThce3egsNhMBgymJBrchmvSzubT3G0SRMSEnbGxVKxQEREREBhk5A5y5y0P+Zdw7sthvaFEcvCBBZJgYCQobsGjvlF2oMDkd08tm4YT5LLzYkwqNFEos9SdwzADkj70aDz0G5Dc0VUG6eIcYzsGYw9+VhmB+3PA2vrw6+CDRlmxYtuyIgujA6wYSCuafOFzGjtbHuV71t40lahMDnx7eqXoit8u6GTkXXADoOX0ZWrX17zXXjp4CHJTgElSkWXeO995alp5sbsT91mnP2R7Ju7/GeO8TuLlClRmWp9mc0sOxPM4sgiVCjReKKztjemuSY3F2uV0ZiYmCoVKlSG/bIo75OnYhqQktDCdmZN8/Ey8RaXtrXqvTPMM8ffzDPHPLPU7lkOlR2r0aCBsIDHn6+OCsA3m0Mx5oyRG+VQ4/DwniIWRZ0yEkHG8LWn7V76U9KL/PcC0J0x8ZO9RX8Iohh9UL6tNeNekSQY6ngUMXUUrFDI9tbw+/aberbTBsUROyM3g7w42qq10sFEcaqe1iopzc6cAkvxgvE7BlHxQ+ot2bnPul+K5vVq7dRdEF4SvtBxvD39LcIjEEg8EnlCaOXt6btDPU33DZLG++678beDjb0DYoXEojizM0l1DpYdLt1pDxbJE3Kiyb6e31R92lXb+inDa5lgLacjOmUrOrPS1arPzG9MDgaDF61/aVJKKCwZ+pThh4fuUWckV7n9AoGnhUfgCC4f+czNNt6ov2wWQiwBmvHeUZoTRKDIFus7ZVI4m2Oq/a8JOzPU/2p3pn/U3zQL7QQMyj+1rfYAS1Q8tAAAAABJRU5ErkJggg=="/>
+                          </svg>
+                        </span>
+                    	</span>
+                    	<p class="btn-text">Sign in with GitHub</p>
+                    </div>
+                    <% end %>
                 <% end %>
-            </div>
+              </article>
+            </section>
+          </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  $(function() {
+      $( "#tabs" ).tabs();
+  });
+</script>
