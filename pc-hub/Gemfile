@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.10'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Gem for the forum
-gem 'thredded', '~> 0.6.1'
+gem 'thredded', '~> 0.14.4'
 
 #Gem for bootstrap view
 gem 'twitter-bootstrap-rails'
@@ -33,8 +33,10 @@ gem 'bootstrap_form'
 
 gem "therubyracer"
 
+gem 'rails-ujs', '~> 5.1.0.beta1'
+
 # Gem for user authentication
-gem 'devise', '4.0'
+gem 'devise', '4.4.3'
 
 gem 'devise_invitable', '~> 1.6.0'
 
@@ -54,7 +56,7 @@ group :development, :test do
   gem 'rspec-rails'
 
   # Avoid the brittleness of fixtures
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 
   gem 'codacy-coverage', require: false
 end
