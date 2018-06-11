@@ -33,9 +33,6 @@ gem 'omniauth-github'
 #Gem for bootstrap view
 gem 'twitter-bootstrap-rails'
 
-#Gem for materialize framework
-gem 'materialize-sass', '~> 1.0.0.rc1'
-
 gem 'bootstrap_form'
 
 gem "therubyracer"
