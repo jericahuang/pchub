@@ -22,7 +22,6 @@ body{
 .wrapper {
     min-height: 100%;
     height: auto;
-    height: 100%;
     margin: 0 auto -162px; /* the bottom margin is the negative value of the footer's height */
 }
 
