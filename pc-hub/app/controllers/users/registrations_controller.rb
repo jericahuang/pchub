@@ -3,12 +3,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 protected
 
-def update_resource(resource, params)
+def update_resource(params)
 
     @user = User.find(current_user.id)
     is_github_account = !@user.provider.blank?
 
-    successfully_updated = if !is_github_account
+    if !is_github_account
       @user.update_with_password(params)
     else
       @user.update_without_password(params.except("current_password"))
