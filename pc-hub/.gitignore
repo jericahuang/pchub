@@ -21,3 +21,6 @@
 
 # Ignore code coverage
 /coverage
+
+# Ignore environment variables
+/config/local_env.yml
