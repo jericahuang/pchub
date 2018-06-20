@@ -52,9 +52,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  # Wrapper for Rails 3 which includes rspec
-  gem 'rspec-rails'
-
   # Avoid the brittleness of fixtures
   gem 'factory_bot_rails'
 
@@ -74,9 +71,6 @@ group :test do
   gem 'faker'
 
   gem 'capybara'
-
-  # Runs specs automatically on change
-  gem 'guard-rspec'
 
   gem 'launchy'
 end
