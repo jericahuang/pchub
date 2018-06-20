@@ -3,11 +3,13 @@ class User < ActiveRecord::Base
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable, :invitable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :validate_on_invite => true
-        
-    validates :name, presence: true
-    validates :country, presence: true
-    validates :city, presence: true
-    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }
+
+    validates :name, presence: true, format: { with: /[^!@#\$%\^\*()\[\]\{\}\+_=\?\/<>:~,\"'`;]+/, message: "Please enter a valid name" }, length: { maximum: 255}
+    validates :nickname, format: { with: /[^!@#\$%\^\*()\[\]\{\}\+_=\?\/<>:~,\"'`;]+/, message: "Please enter a valid name", allow_blank: true }, length: { maximum: 255}
+    validates :country, presence: true, length: { maximum: 255}
+    validates :city, presence: true, length: { maximum: 255}
+    validates :state_or_province, length: { maximum: 255}
+    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }, length: { maximum: 255}
     validates :role, presence: true
 
     if self.created_by_invite == true
@@ -20,9 +22,9 @@ class User < ActiveRecord::Base
 
 
     def self.search(search)
-        where("name LIKE ?", "%#{search}%") 
+        where("name LIKE ?", "%#{search}%")
     end
-   
+
     def role?(role)
         return self.role == role.to_s
     end
@@ -36,12 +38,12 @@ class User < ActiveRecord::Base
     def active_for_authentication?
         if confirmed_at.nil?
             self.approved = false
-        else    
+        else
             if self.role? :admin or self.role? :superadmin
                 if self.created_by_invite?
                     self.approved = true
                 else
-                    self.approved = super && approved? 
+                    self.approved = super && approved?
                 end
             else
                 self.approved = true
@@ -49,14 +51,14 @@ class User < ActiveRecord::Base
         end
     end
 
-    def inactive_message 
+    def inactive_message
         if confirmed_at.nil?
             :unconfirmed
-        elsif !approved? 
-            :not_approved 
-        else 
-            super 
-        end 
+        elsif !approved?
+            :not_approved
+        else
+            super
+        end
     end
 
     protected
