@@ -4,10 +4,12 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :invitable, :confirmable, :omniauthable,
     :recoverable, :rememberable, :trackable, :validatable, :validate_on_invite => true
 
-    validates :name, presence: true
-    validates :country, presence: true, unless: -> { from_omniauth? }
-    validates :city, presence: true, unless: -> { from_omniauth? }
-    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }, unless: -> { from_omniauth? }
+    validates :name, presence: true, format: { with: /[^!@#\$%\^\*()\[\]\{\}\+_=\?\/<>:~,\"'`;]+/, message: "Please enter a valid name" }, length: { maximum: 255}
+    validates :nickname, format: { with: /[^!@#\$%\^\*()\[\]\{\}\+_=\?\/<>:~,\"'`;]+/, message: "Please enter a valid name", allow_blank: true }, length: { maximum: 255}
+    validates :country, presence: true, length: { maximum: 255}, unless: -> { from_omniauth? }
+    validates :city, presence: true, length: { maximum: 255}, unless: -> { from_omniauth? }
+    validates :state_or_province, length: { maximum: 255}
+    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }, length: { maximum: 255}
     validates :role, presence: true
 
     def self.from_omniauth(auth)
