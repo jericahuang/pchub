@@ -6,7 +6,7 @@ protected
 def update_resource(params)
 
     @user = User.find(current_user.id)
-    is_github_account = !@user.provider.blank?
+    is_github_account = @user.from_omniauth?
 
     if !is_github_account
       @user.update_with_password(params)
