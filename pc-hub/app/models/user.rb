@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     validates :country, presence: true, length: { maximum: 255}, unless: -> { from_omniauth? }
     validates :city, presence: true, length: { maximum: 255}, unless: -> { from_omniauth? }
     validates :state_or_province, length: { maximum: 255}
-    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }, length: { maximum: 255}
+    validates :email, confirmation: true, format: { with: /\b[A-Z0-9._%a-z\-]+@peacecorps\.gov\z/, message: "Must be a peacecorps.gov account" }, length: { maximum: 255}, unless: -> { from_omniauth? }
     validates :role, presence: true
 
     def self.from_omniauth(auth)
