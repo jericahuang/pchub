@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
   resources :notifications
   resources :applications
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  devise_for :users, :controllers => { :invitations => 'users/invitations', registrations: 'users/registrations', :omniauth_callbacks => "callbacks" }
   resources :users do
      member do
         post 'approve'
     end
   end
 
- 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   #root of the site"
   root 'applications#index'
-  
+
   get 'application/index' => 'applications#index'
 
   get 'application/search' => 'applications#search'
