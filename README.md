@@ -31,7 +31,7 @@ Then do:
     $ ./configure
     $ make
     $ sudo make install
-    
+
 By default, this will install Ruby into `/usr/local`. To change, pass the `--prefix=DIR` option to the `./configure` script.
 
 #### 2. Installing SQLite
@@ -51,13 +51,13 @@ Then do:
     $ ./configure --prefix=/usr/local
     $ make
     $ make install
-    
+
 #### 3. Installing Rails
 
 To install Rails, use the gem install command provided by RubyGems:
 
     $ gem install rails
-    
+
 To verify that you have everything installed correctly, you should be able to run the following:
 
     $ rails --version
@@ -67,6 +67,11 @@ To verify that you have everything installed correctly, you should be able to ru
 ImageMagick is a dependency for this project. If you don't have it installed, install it by following the steps here:
 
 [https://www.imagemagick.org/script/download.php](https://www.imagemagick.org/script/download.php)
+
+#### 5. Setting environment variables
+
+Set environment variables such as account settings and API keys in pc-hub/config/local_env.yml. The file is gitignored, so
+private information will not be checked in.
 
 ### Running the App
 
@@ -78,15 +83,15 @@ cd into the pchub/pc-hub directory:
 Install the gems by running:
 
     $ bundle install
-    
+
 Set up the database by running:
 
     $ rake db:setup
-    
+
 Launch the app server by running:
 
     $ rails server
-    
+
 Navigate to [localhost:3000](http://localhost:3000/) on your web browser.
 
 Update the gems to their latest versions, if needed, by running:
@@ -114,7 +119,7 @@ PC Hub has been a project in Systers Google Summer of Code throughout the years.
 
 [GSOC 2014](https://github.com/systers/pchub/wiki/GSoC-2014-Vaibhavi-Desai)  
 
-[GSoC 2016](https://github.com/systers/pchub/wiki/GSoC-2016-Izabela-Cardoso-&-Daisy-Nkweteyim) 
+[GSoC 2016](https://github.com/systers/pchub/wiki/GSoC-2016-Izabela-Cardoso-&-Daisy-Nkweteyim)
 
 [GSoC 2018](https://github.com/systers/pchub/wiki/GSoC-2018-Jerica-Huang)
 
